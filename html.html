@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+        table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<title> Prediction of Pandemic </title>
+
+<body bgcolor="pink">
+<marquee> <H1> Current Cordinates</H1></marquee>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+    
+function showPosition(position) {
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+</script>
+<table id="current_state">
+
+	<tr>
+		<th> Latitude </th>
+		<th> Longitude </th>
+	</tr>
+	<tr>
+		<td>     28.5572056  </td>
+		<td>     77.36688   </td>
+	</tr>
+	<tr>
+		<td> current latitude </td>
+		<td> current longitude </td>
+        </tr>
+</table>
+
+    <p><input type="button" id="bt" value="Show Table Data" onclick="showTableData()" /></p>
+    <p id="info"></p>
+</body>
+<script>
+
+    function showTableData() {
+        document.getElementById('info').innerHTML = "";
+        var myTab = document.getElementById('current_state');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells;
+
+            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+            for (var j = 0; j < objCells.length; j++) {
+                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
+            }
+            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+        }
+    }
+</script>
+
+
+
+</html>
